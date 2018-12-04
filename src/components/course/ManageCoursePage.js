@@ -42,7 +42,14 @@ class ManageCoursePage extends Component {
   }
 }
 
+const getCourseById = (courses, id) => {
+  const course = courses.filter(course => course.id === id);
+  if (course.length) return course[0];
+  return null;
+};
+
 const mapStateToProps = (state, ownProps) => {
+  let courseId = ownProps.params.id; // From path /course/:id
   let course = {
     id: "",
     watchHref: "",
@@ -51,6 +58,10 @@ const mapStateToProps = (state, ownProps) => {
     length: "",
     category: ""
   };
+
+  if (courseId && state.courses.length > 0) {
+    course = getCourseById(state.courses, courseId);
+  } 
 
   const authorsFormattedForDropdown = state.authors.map(author => {
     return {
@@ -65,6 +76,12 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
+const mapDispatchToProps = dispatch => {
+  return {
+    actions: bindActionCreators(courseActions, dispatch)
+  };
+};
+
 ManageCoursePage.propTypes = {
   course: PropTypes.object.isRequired,
   authors: PropTypes.array.isRequired,
@@ -73,12 +90,6 @@ ManageCoursePage.propTypes = {
 
 ManageCoursePage.contextTypes = {
   router: PropTypes.object
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    actions: bindActionCreators(courseActions, dispatch)
-  };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ManageCoursePage);
