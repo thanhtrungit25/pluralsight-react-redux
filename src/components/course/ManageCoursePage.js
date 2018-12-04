@@ -6,7 +6,7 @@ import * as courseActions from "../../actions/courseActions";
 import CourseForm from "./CourseForm";
 import toastr from "toastr";
 
-class ManageCoursePage extends Component {
+export class ManageCoursePage extends Component {
   constructor(props, context) {
     super(props, context);
 
