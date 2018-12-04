@@ -21,11 +21,18 @@ class ManageCoursePage extends Component {
     course[field] = event.target.value;
     this.setState({ course: course });
   }
+
+  saveCourse(event) {
+    event.preventDefault();
+    this.props.actions.saveCourse(this.state.course);
+  }
+
   render() {
     return (
       <CourseForm
         allAuthors={this.props.authors}
         onChange={this.updateCourseState}
+        onSave={this.saveCourse}
         course={this.state.course}
         errors={this.state.errors}
       />
@@ -58,12 +65,13 @@ const mapStateToProps = (state, ownProps) => {
 
 ManageCoursePage.propTypes = {
   course: PropTypes.object.isRequired,
-  authors: PropTypes.array.isRequired
+  authors: PropTypes.array.isRequired,
+  actions: PropTypes.object.isRequired
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    acitons: bindActionCreators(courseActions, dispatch)
+    actions: bindActionCreators(courseActions, dispatch)
   };
 };
 
