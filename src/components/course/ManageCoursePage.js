@@ -14,6 +14,7 @@ class ManageCoursePage extends Component {
       errors: {}
     };
     this.updateCourseState = this.updateCourseState.bind(this);
+    this.saveCourse = this.saveCourse.bind(this);
   }
   updateCourseState(event) {
     const field = event.target.name;
