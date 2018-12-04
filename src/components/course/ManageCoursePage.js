@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";0;
+import PropTypes from "prop-types";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import * as courseActions from "../../actions/courseActions";
@@ -26,6 +26,7 @@ class ManageCoursePage extends Component {
   saveCourse(event) {
     event.preventDefault();
     this.props.actions.saveCourse(this.state.course);
+    this.context.router.push('/courses');
   }
 
   render() {
@@ -68,6 +69,10 @@ ManageCoursePage.propTypes = {
   course: PropTypes.object.isRequired,
   authors: PropTypes.array.isRequired,
   actions: PropTypes.object.isRequired
+};
+
+ManageCoursePage.contextTypes = {
+  router: PropTypes.object
 };
 
 const mapDispatchToProps = dispatch => {
