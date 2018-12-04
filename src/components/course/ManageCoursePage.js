@@ -41,7 +41,6 @@ class ManageCoursePage extends Component {
       .then(() => this.redirect())
       .catch(error => {
         toastr.error(error);
-        this.setState({ error });
         this.setState({ saving: false });
       });
   }
