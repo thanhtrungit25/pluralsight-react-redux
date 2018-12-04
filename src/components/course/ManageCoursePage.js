@@ -10,7 +10,7 @@ class ManageCoursePage extends Component {
     super(props, context);
 
     this.state = {
-      course: Object.assign({}, this.props.course),
+      course: Object.assign({}, props.course),
       errors: {}
     };
     this.updateCourseState = this.updateCourseState.bind(this);
