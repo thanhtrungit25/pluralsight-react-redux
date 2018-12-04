@@ -7,7 +7,7 @@ import CourseForm from "./CourseForm";
 import toastr from "toastr";
 import { authorsFormattedForDropdown } from "../../selectors/selectors";
 
-export class ManageCoursePage extends Component {
+export class ManageCoursePage extends Component { // eslint-disable-line import/no-named-as-default
   constructor(props, context) {
     super(props, context);
 
